@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">CloseBitcon</string>
+    <string name="stringWelcome_text_1">Welcome to the app!</string>
+    <string name="stringWelcome_text_2">Please insert your first- and lastname for identification
+        purposes:
+    </string>
+    <string name="stringFirstname">Firstname</string>
+    <string name="stringLastname">Lastname</string>
+    <string name="send">Send</string>
+    <string name="stringNoResult">No valid names were recorded</string>
+    <string name="stringWelcomeUser">Successfully saved your name.\nWelcome %1$s! </string>
+</resources>
