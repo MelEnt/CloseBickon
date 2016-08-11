@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity
         preferences = getSharedPreferences(InitFormActivity.getPrefKey(), MODE_PRIVATE);
         AutoLog.introduce();
         setContentView(R.layout.activity_main);
-        if(!preferences.getAll().isEmpty())
+        if(preferences.getAll().containsKey("FIRST_NAME") && preferences.getAll().containsKey("LAST_NAME"))
         {
             Intent intent = new Intent(MainActivity.this, InitFormActivity.class);
             startActivity(intent);
@@ -43,8 +43,21 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    public void clearPreference(View view)
+    public void changeName(View view)
     {
-        preferences.edit().clear().apply();
+        startActivity(new Intent(MainActivity.this, InitFormActivity.class));
+    }
+
+    public void startScan(View view)
+    {
+        startService(new Intent(MainActivity.this, BgScannerActivity.class));
+
+    }
+
+    @Override
+    protected void onStop()
+    {
+        super.onStop();
+
     }
 }

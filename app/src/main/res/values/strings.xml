@@ -8,6 +8,9 @@
     <string name="stringLastname">Lastname</string>
     <string name="send">Send</string>
     <string name="stringNoResult">No valid names were recorded</string>
-    <string name="stringWelcomeUser">Successfully saved your name.\nWelcome %1$s! </string>
+    <string name="stringWelcomeUser">Successfully saved your name.\nWelcome %1$s!</string>
     <string name="clearName">Clear Name</string>
+    <string name="changeName">Change Name</string>
+    <string name="startScan">Start Scan</string>
+
 </resources>

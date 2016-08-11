@@ -15,9 +15,16 @@
         android:layout_height="wrap_content"
         android:text="@string/app_name"/>
     <Button
+        android:id="@+id/changeNameButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/clearName"
+        android:text="@string/changeName"
         android:layout_alignParentBottom="true"
-        android:onClick="clearPreference"/>
+        android:onClick="changeName"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/changeNameButton"
+        android:text="@string/startScan"
+        android:onClick="startScan"/>
 </RelativeLayout>

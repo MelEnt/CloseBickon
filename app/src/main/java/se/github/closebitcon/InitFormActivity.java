@@ -18,7 +18,7 @@ import se.github.closebitcon.extra.Toasters;
  */
 public class InitFormActivity extends AppCompatActivity
 {
-    private final static String PREF_KEY = "Bitcon_LocalPref";
+    private final static String PREF_KEY = "se.github.closebitcon.SHARED_PREF";
     private EditText firstNameInput = null;
     private EditText lastNameInput = null;
     private Map<String, ?> prefMap;

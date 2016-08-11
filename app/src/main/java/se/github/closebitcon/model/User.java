@@ -1,4 +1,4 @@
-package se.github.closebitcon.se.github.closebitcon.model;
+package se.github.closebitcon.model;
 
 /**
  * Created by MelEnt on 2016-08-10.
