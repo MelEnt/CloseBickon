@@ -12,5 +12,7 @@
     <string name="clearName">Clear Name</string>
     <string name="changeName">Change Name</string>
     <string name="startScan">Start Scan</string>
+    <string name="stringBackgroundRunning">Activity is running on the background</string>
+    <string name="log">Log</string>
 
 </resources>
