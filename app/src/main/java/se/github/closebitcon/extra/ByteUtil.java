@@ -17,6 +17,7 @@ public class ByteUtil
 	public static final int BYTE = (8 / 8);
 	public static final int SHORT = (16 / 8);
 	public static final int INT = (32 / 8);
+	public static final int LONG = (64 / 8);
 
 	// READING
 
@@ -53,6 +54,11 @@ public class ByteUtil
 	public static int readInt(InputStream input) throws IOException
 	{
 		return readBytes(input, INT).getInt(0);
+	}
+
+	public static long readLong(InputStream input) throws IOException
+	{
+		return readBytes(input, LONG).getLong(0);
 	}
 
 	private static ByteBuffer readBytes(InputStream input, int bytes) throws IOException
@@ -172,6 +178,14 @@ public class ByteUtil
 		ByteBuffer bb = ByteBuffer.allocate(INT);
 		bb.order(ENDIAN);
 		bb.putInt(value);
+		output.write(bb.array(), 0, bb.array().length);
+	}
+
+	public static void writeLong(OutputStream output, long value) throws IOException
+	{
+		ByteBuffer bb = ByteBuffer.allocate(LONG);
+		bb.order(ENDIAN);
+		bb.putLong(value);
 		output.write(bb.array(), 0, bb.array().length);
 	}
 
