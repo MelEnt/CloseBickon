@@ -1,4 +1,4 @@
-package se.github.closebitcon.extra.bluetooth;
+package se.github.closebitcon.bluetooth;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package se.github.closebitcon.extra.bluetooth;
+package se.github.closebitcon.bluetooth;
 
 import android.bluetooth.BluetoothDevice;
 import android.os.Parcel;

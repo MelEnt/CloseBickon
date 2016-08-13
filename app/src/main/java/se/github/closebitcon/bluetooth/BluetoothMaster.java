@@ -1,10 +1,7 @@
-package se.github.closebitcon.extra.bluetooth;
+package se.github.closebitcon.bluetooth;
 
-import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
-import android.content.Context;
-import android.content.pm.PackageManager;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,8 +19,6 @@ import se.github.closebitcon.extra.AutoLog;
  */
 public class BluetoothMaster
 {
-	private Context context;
-	private boolean bluetoothSupported = false;
 	private Timer pingTimer = new Timer();
 	private Set<OnConnectionsChanged> onChangeListeners = new HashSet<>();
 
@@ -32,25 +27,12 @@ public class BluetoothMaster
 
 	private ScanCallbackClass scanCallbackClass = new ScanCallbackClass();
 
-	public BluetoothMaster(Context context)
+	public BluetoothMaster()
 	{
-		this.context = context;
-		Activity activity = (Activity) context;
-
 		bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-		bluetoothSupported = activity.getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE);
 	}
 
 	// STATUS METHODS //
-
-	/**
-	 * Checks if bluetooth is supported on this device
-	 * @return true if supported
-	 */
-	public boolean bluetoothSupported()
-	{
-		return bluetoothSupported;
-	}
 
 	/**
 	 * checks if this bluetooth is currently scanning for beacons and/or other devices

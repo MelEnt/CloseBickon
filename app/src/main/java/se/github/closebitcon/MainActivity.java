@@ -10,22 +10,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import se.github.closebitcon.extra.AutoLog;
-import se.github.closebitcon.extra.Toasters;
+import se.github.closebitcon.service.BgScannerActivity;
 
 public class MainActivity extends AppCompatActivity
 {
     private SharedPreferences preferences;
-    private Map<String, ?> prefMap;
     private TextView logText;
-    private Receiver receiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -37,9 +34,9 @@ public class MainActivity extends AppCompatActivity
         logText = (TextView) findViewById(R.id.log);
         logText.setMovementMethod(new ScrollingMovementMethod());
         preferences = getSharedPreferences(InitFormActivity.getPrefKey(), MODE_PRIVATE);
-        receiver = new Receiver();
+        Receiver receiver = new Receiver();
 
-        if(preferences.getAll().containsKey("FIRST_NAME") && preferences.getAll().containsKey("LAST_NAME"))
+        if(!(preferences.getAll().containsKey("FIRST_NAME") && preferences.getAll().containsKey("LAST_NAME")))
         {
             Intent intent = new Intent(MainActivity.this, InitFormActivity.class);
             startActivity(intent);
@@ -56,7 +53,7 @@ public class MainActivity extends AppCompatActivity
         super.onResume();
 
         //Debug
-        prefMap = new HashMap<>(preferences.getAll());
+        Map<String, ?> prefMap = new HashMap<>(preferences.getAll());
         for(Map.Entry entry : prefMap.entrySet())
         {
             AutoLog.debug("key: "+entry.getKey() + " value: " +entry.getValue());
@@ -71,13 +68,16 @@ public class MainActivity extends AppCompatActivity
     public void startScan(View view)
     {
         startService(new Intent(MainActivity.this, BgScannerActivity.class));
+        //disable button after first open
+        Button button = (Button) findViewById(R.id.sendButton);
+        button.setClickable(false);
+        button.setAlpha(.5f);
     }
 
     @Override
     protected void onStop()
     {
         super.onStop();
-
     }
 
     private class Receiver extends BroadcastReceiver
@@ -86,8 +86,7 @@ public class MainActivity extends AppCompatActivity
         @Override
         public void onReceive(Context context, Intent intent)
         {
-            for(int i = 0; i<100; i++)
-                logText.append(intent.getStringExtra(BgScannerActivity.LOG_ENTRY_ACTION) + "\n");
+            logText.append(intent.getStringExtra(BgScannerActivity.LOG_ENTRY_ACTION) + "\n");
         }
     }
 }
